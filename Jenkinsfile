@@ -13,7 +13,7 @@ pipeline {
         script {
           env.GIT_COMMIT = sh(script: 'git rev-parse HEAD', returnStdout: true).trim()
         }
-        ontainer('vault') {
+        container('vault') {
           script {
             env.GITHUB_TOKEN = sh(script: 'vault read -field=value secret/ops/token/github', returnStdout: true)
             env.CODECOV_TOKEN = sh(script: 'vault read -field=value secret/ops/token/codecov', returnStdout: true)
